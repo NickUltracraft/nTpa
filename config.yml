@@ -1,0 +1,40 @@
+# Qualquer problema ou dúvida contate-me via discord
+# Discord: NickUltracraft#4550
+Config:
+    # Tempo para pedir cada teletransporte (em segundos)
+    ComandoDelay: 120
+    ComandosTpa: 
+    - '/tpa'
+    - '/essentials:tpa'
+    - '/system:tpa'
+    ComandosTpDeny:
+    - '/tpdeny'
+    - '/essentials:tpdeny'
+    - '/system:tpdeny'
+    ComandosTpAccept:
+    - '/tpaccept'
+    - '/essentials:tpaccept'
+    - '/system:tpaccept'
+Mensagens:
+    # Para desativar qualquer mensagem, troque por ''
+    Sem-Permissao: '&cVocê não tem permissão para executar este comando.'
+    Uso-Comando: '&cVocê deve usar: %comando% <jogador>'
+    Offline: '&cDesculpe, mas este jogador está offline.'
+    Erro1: '&cVocê não pode teleportar para você mesmo.'
+    Erro2: '&cAguarde um pouco para mandar outra solicitação de teleporte.'
+    Erro3: '&cTeleporte cancelado...'
+    EnviouTeleporte: '&eVocê solicitou um pedido de teleporte para o jogador &f%jogador%'
+    PedidoTeleporte: '&eO jogador &f%jogador% &epediu para teleportar-se até você.'
+    Expirou: '&cO seu pedido de teleporte expirou.'
+    Cancelado: '&cO pedido de teleporte foi cancelado.'
+    Aceito: '&aO pedido de teletransporte foi aceito.'
+    JaAceito: '&cO pedido do teletransporte já foi aceito.'
+    Teletransporte1: '&eVocê será teletransportado em 3 segundos...'
+    Aceitou:    
+        Titulo: '&e&lTELEPORTE'
+        Sub-Titulo: 'Teleportando em %s% segundo(s).'
+        Sub-Titulo2: 'Teleportando...'
+Permissoes:
+    Usar: 'tpa.usar'
+    Aceitar: 'tpa.aceitar'
+    Negar: 'tpa.negar'
