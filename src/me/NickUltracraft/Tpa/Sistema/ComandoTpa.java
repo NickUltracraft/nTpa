@@ -78,8 +78,8 @@ public class ComandoTpa implements Listener {
 		    	texto.addExtra(texto8);
 		    	TextComponent texto7 = new TextComponent("\n§eO pedido de teleporte expira em §e" + Config.tempodelay + " segundos§r§e.");
 		    	texto.addExtra(texto7);
-		    	texto2.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, cmd + " " + p.getName()));
-		    	texto3.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, cmd + " " + p.getName()));
+		    	texto2.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "tpaceitar" + " " + p.getName()));
+		    	texto3.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "tpanegar" + " " + p.getName()));
 		    	BaseComponent[] textos = new ComponentBuilder("§aClique para aceitar.").create();
 		    	HoverEvent passarMouse = new HoverEvent(HoverEvent.Action.SHOW_TEXT, textos);
 		    	texto2.setHoverEvent(passarMouse);

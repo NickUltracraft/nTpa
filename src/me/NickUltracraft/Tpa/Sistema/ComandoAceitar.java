@@ -19,6 +19,7 @@ public class ComandoAceitar implements Listener {
 	public static ArrayList<String> lista1 = MoveEvent.lista;
 	private int a = 0;
 
+	@SuppressWarnings("deprecation")
 	@EventHandler(ignoreCancelled=true)
 	public void onComando(PlayerCommandPreprocessEvent e) {
 		String[] args = e.getMessage().toLowerCase().split(" ");
@@ -65,53 +66,71 @@ public class ComandoAceitar implements Listener {
 		    	String title = Mensagens.title;
 		    	String subtitle = Mensagens.subtitle;
 		    	String subtitle2 = Mensagens.subtitle2;
-		    	new BukkitRunnable() {
-		    		@SuppressWarnings("deprecation")
-					public void run() {
-		    			a++;
-		    			if(a == 1) {
-		    				if(!title.equalsIgnoreCase("") && (!subtitle.equalsIgnoreCase(""))) {
-			    				quemConvidou.sendTitle(title, subtitle.replace("%s%", "3"));
-			    				quemConvidou.playSound(p.getLocation(), Sound.NOTE_PLING, 15, 1);
-		    				}
-		    				return;
-		    			}
-		    			if(a == 2) {
-		    				if(!title.equalsIgnoreCase("") && (!subtitle.equalsIgnoreCase(""))) {
-			    				quemConvidou.sendTitle(title, subtitle.replace("%s%", "2"));
-			    				quemConvidou.playSound(p.getLocation(), Sound.NOTE_PLING, 15, 1);
-		    				}
-		    				return;
-		    			}	
-		    			if(a == 3) {
-		    				if(!title.equalsIgnoreCase("") && (!subtitle.equalsIgnoreCase(""))) {
-			    				quemConvidou.sendTitle(title, subtitle.replace("%s%", "1"));
-			    				quemConvidou.playSound(p.getLocation(), Sound.NOTE_PLING, 15, 1);
-		    				}
-		    				return;
-		    			}
-		    			if(a == 4) {
-		    				if(!title.equalsIgnoreCase("") && (!subtitle2.equalsIgnoreCase(""))) {
-			    				quemConvidou.sendTitle(title, subtitle2);
-			    				quemConvidou.playSound(p.getLocation(), Sound.LEVEL_UP, 15, 1);
-		    				}
-			    			quemConvidou.teleport(p);
-			    			lista.remove(p.getName());
-			    			if(!Mensagens.aceito.equalsIgnoreCase("")) {
-			    				quemConvidou.sendMessage(Mensagens.aceito);
+		    	if(!quemConvidou.hasPermission("ntpa.bypass.delay")) {
+			    	new BukkitRunnable() {
+						public void run() {
+			    			a++;
+			    			if(a == 1) {
+			    				if(!title.equalsIgnoreCase("") && (!subtitle.equalsIgnoreCase(""))) {
+				    				quemConvidou.sendTitle(title, subtitle.replace("%s%", "3"));
+				    				quemConvidou.playSound(p.getLocation(), Sound.NOTE_PLING, 15, 1);
+			    				}
+			    				return;
 			    			}
-			    			convites.remove(quemConvidou);
-			    			a = 0;
-			    			p.sendTitle("", "");
-			    			if(lista1.contains(quemConvidou.getName())) {
-		    					lista1.remove(quemConvidou.getName());
-		    				}
+			    			if(a == 2) {
+			    				if(!title.equalsIgnoreCase("") && (!subtitle.equalsIgnoreCase(""))) {
+				    				quemConvidou.sendTitle(title, subtitle.replace("%s%", "2"));
+				    				quemConvidou.playSound(p.getLocation(), Sound.NOTE_PLING, 15, 1);
+			    				}
+			    				return;
+			    			}	
+			    			if(a == 3) {
+			    				if(!title.equalsIgnoreCase("") && (!subtitle.equalsIgnoreCase(""))) {
+				    				quemConvidou.sendTitle(title, subtitle.replace("%s%", "1"));
+				    				quemConvidou.playSound(p.getLocation(), Sound.NOTE_PLING, 15, 1);
+			    				}
+			    				return;
+			    			}
+			    			if(a == 4) {
+			    				if(!title.equalsIgnoreCase("") && (!subtitle2.equalsIgnoreCase(""))) {
+				    				quemConvidou.sendTitle(title, subtitle2);
+				    				quemConvidou.playSound(p.getLocation(), Sound.LEVEL_UP, 15, 1);
+			    				}
+				    			quemConvidou.teleport(p);
+				    			lista.remove(p.getName());
+				    			if(!Mensagens.aceito.equalsIgnoreCase("")) {
+				    				quemConvidou.sendMessage(Mensagens.aceito);
+				    			}
+				    			convites.remove(quemConvidou);
+				    			a = 0;
+				    			p.sendTitle("", "");
+				    			if(lista1.contains(quemConvidou.getName())) {
+			    					lista1.remove(quemConvidou.getName());
+			    				}
+				    			cancel();
+				    			return;
+			    			}
 			    			cancel();
 			    			return;
-		    			}
-		    			return;
-		    		}
-		    	}.runTaskTimer(Main.m, 0, 20);
+			    		}
+			    	}.runTaskTimer(Main.m, 0, 20);
+			    	return;
+		    	} else {
+		    		if(!title.equalsIgnoreCase("") && (!subtitle2.equalsIgnoreCase(""))) {
+	    				quemConvidou.sendTitle(title, subtitle2);
+	    				quemConvidou.playSound(p.getLocation(), Sound.LEVEL_UP, 15, 1);
+    				}
+	    			quemConvidou.teleport(p);
+	    			lista.remove(p.getName());
+	    			if(!Mensagens.aceito.equalsIgnoreCase("")) {
+	    				quemConvidou.sendMessage(Mensagens.aceito);
+	    			}
+	    			convites.remove(quemConvidou);
+	    			p.sendTitle("", "");
+	    			if(lista1.contains(quemConvidou.getName())) {
+    					lista1.remove(quemConvidou.getName());
+    				}
+		    	}
 		    }
 		    return;
 		}
